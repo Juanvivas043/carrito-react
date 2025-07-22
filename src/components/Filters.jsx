@@ -21,15 +21,18 @@ export function Filters ({ onChange }) {
     }
     const categories = [{
         id: '0',
-        name: 'groceries'
+        name: 'all'
     },{
         id: '1',
-        name: 'furniture'
+        name: 'groceries'
     },{
         id: '2',
-        name: 'fragrances'
+        name: 'furniture'
     },{
         id: '3',
+        name: 'fragrances'
+    },{
+        id: '4',
         name: 'beauty'
     }]
 
@@ -37,7 +40,7 @@ export function Filters ({ onChange }) {
         <section className="filters">
             <div>
                 <label htmlFor="price">Price</label>
-                <input 
+                <input className='range-filter'
                 type="range" 
                 id="price"
                 min="0"

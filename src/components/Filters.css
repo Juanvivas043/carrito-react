@@ -7,6 +7,15 @@
 }
 
 .filters > div {
+  align-items: center;
   display: flex;
   gap: 1rem;
+}
+
+.range-filter {
+  width: 250px;
+  appearance: none;
+  background: #f0f0f0; 
+  height: 5px;
+  border-radius: 5px;
 }
