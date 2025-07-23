@@ -1,20 +1,24 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import './Filters.css'
+import { useFilters } from '../hooks/useFilters.js'
 
-export function Filters ({ onChange }) {
+export function Filters () {
 
+    const { setFilters } = useFilters()
     const [minPrice, setMinPrice] = useState(0)
+    const minPriceFilterId = useId()
+    const categoryFilterId = useId()
 
     const handleChangeMinPrice = (event) => {
         setMinPrice(event.target.value)
-        onChange(prevState => ({
+        setFilters(prevState => ({
             ...prevState,
             minPrice: event.target.value
         }))
     }
 
     const handleChangeCategory = (event)  => {
-        onChange(prevState => ({
+        setFilters(prevState => ({
             ...prevState,
             category: event.target.value
         }))
@@ -39,10 +43,10 @@ export function Filters ({ onChange }) {
     return (
         <section className="filters">
             <div>
-                <label htmlFor="price">Price</label>
+                <label htmlFor={minPriceFilterId}>Price</label>
                 <input className='range-filter'
                 type="range" 
-                id="price"
+                id={minPriceFilterId}
                 min="0"
                 max="1000"
                 onChange={handleChangeMinPrice}
@@ -52,12 +56,12 @@ export function Filters ({ onChange }) {
             </div>
                 
             <div>
-                <label htmlFor="category">Category</label>
+                <label htmlFor={categoryFilterId}>Category</label>
                 <select onChange={handleChangeCategory} id="category">
                     {
                         categories.map((category) => {
                             return(
-                                <option key={category.id} value={category.name}>{category.name}</option>
+                                <option key={categoryFilterId} value={category.name}>{category.name}</option>
                             )
                         })
                     }
