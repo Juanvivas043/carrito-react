@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { useCartReducer } from "../hooks/useCartReducer.js";
-
+// eslint-disable-next-line react-refresh/only-export-components
 export const CartContext = createContext()
 
 export function CartProvider ({ children }) {
